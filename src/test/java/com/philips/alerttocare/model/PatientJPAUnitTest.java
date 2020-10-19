@@ -44,14 +44,14 @@ public class PatientJPAUnitTest {
 	  @Test
 	  public void should_store_a_Patient() {
 		  		  
-		  Patient patient = repository.save(new Patient("#patientname", "#pataddress" , 28 , "male" , 9885827367L , null));
+		  Patient patient = repository.save(new Patient("#patientname", "#pataddress" , 28 , "male" , "9885827367" , null));
 		  Date dateobj = patient.getCreatedAt();
 
 	    assertThat(patient).hasFieldOrPropertyWithValue("name", "#patientname");
 	    assertThat(patient).hasFieldOrPropertyWithValue("address", "#pataddress");
 	    assertThat(patient).hasFieldOrPropertyWithValue("age", 28);
 	    assertThat(patient).hasFieldOrPropertyWithValue("gender", "male");
-	    assertThat(patient).hasFieldOrPropertyWithValue("contact", 9885827367L);
+	    assertThat(patient).hasFieldOrPropertyWithValue("contact", "9885827367");
 	    assertThat(patient).hasFieldOrPropertyWithValue("createdAt", dateobj);
 	    
 	  }
@@ -60,13 +60,13 @@ public class PatientJPAUnitTest {
 	  public void should_find_all_patients() {
 		
 		  
-		Patient patient1 = new Patient("#patientname1", "#pataddress1" , 28 , "male" , 9885827367L ,null);
+		Patient patient1 = new Patient("#patientname1", "#pataddress1" , 28 , "male" , "9885827367" ,null);
 	    entityManager.persist(patient1);
 
-	    Patient patient2 = new Patient("#patientname2", "#pataddress2" , 21 , "female" , 9885827367L ,null);
+	    Patient patient2 = new Patient("#patientname2", "#pataddress2" , 21 , "female" , "988582" ,null);
 	    entityManager.persist(patient2);
 
-	    Patient patient3 = new Patient("#patientname3", "#pataddress3" , 23 , "female" , 988367L , null);
+	    Patient patient3 = new Patient("#patientname3", "#pataddress3" , 23 , "female" , "9059343595" , null);
 	    entityManager.persist(patient3);
 
 	    Iterable<Patient> patients = repository.findAll();
@@ -77,10 +77,10 @@ public class PatientJPAUnitTest {
 	  @Test
 	  public void should_find_patient_by_id() {
 		 
-		Patient patient1 = new Patient("#patientname", "#pataddress" , 28 , "male" , 9885827367L , null);
+		Patient patient1 = new Patient("#patientname", "#pataddress" , 28 , "male" , "9885827367" , null);
 	    entityManager.persist(patient1);
 
-	    Patient patient2 = new Patient("#patientname", "#pataddress" , 28 , "male" , 9885827367L , null);
+	    Patient patient2 = new Patient("#patientname", "#pataddress" , 28 , "male" , "98827367" , null);
 	    entityManager.persist(patient2);
 
 	    Patient foundPatient = repository.findById(patient2.getId()).get();
@@ -90,13 +90,13 @@ public class PatientJPAUnitTest {
 	  
 	  @Test
 	  public void should_find_patients_by_Name_containing_string() {
-		  Patient patient1 = new Patient("#patientname", "#pataddress" , 28 , "male" , 9885827367L , null);
+		  Patient patient1 = new Patient("#patientname", "#pataddress" , 28 , "male" , "9885827367" , null);
 	    entityManager.persist(patient1);
 
-	    Patient patient2 = new Patient("#patientname", "#pataddress" , 28 , "male" , 9885827367L , null);
+	    Patient patient2 = new Patient("#patientname", "#pataddress" , 28 , "male" , "9885827367" , null);
 	    entityManager.persist(patient2);
 
-	    Patient patient3 = new Patient("#patient", "#pataddress" , 28 , "male" , 9885827367L , null);
+	    Patient patient3 = new Patient("#patient", "#pataddress" , 28 , "male" , "8056429752" , null);
 	    entityManager.persist(patient3);
 
 	    Iterable<Patient> patientorials = repository.findByNameContaining("name");
@@ -108,13 +108,13 @@ public class PatientJPAUnitTest {
 	  public void should_update_patient_by_id() {
 		 
 		  
-		  Patient patient1 = new Patient("#patientname1", "#pataddress1" , 28 , "male" , 9885827367L , null);
+		  Patient patient1 = new Patient("#patientname1", "#pataddress1" , 28 , "male" , "9885827367" , null);
 	    entityManager.persist(patient1);
 
-	    Patient patient2 = new Patient("#patientname2", "#pataddress2" , 21 , "female" , 9885827367L , null);
+	    Patient patient2 = new Patient("#patientname2", "#pataddress2" , 21 , "female" , "98891567367" , null);
 	    entityManager.persist(patient2);
 
-	    Patient updatedPatient = new Patient("#Updatespatientname", "#Updatedpataddress" , 20 , "male" , 900020202L , null);
+	    Patient updatedPatient = new Patient("#Updatespatientname", "#Updatedpataddress" , 20 , "male" , "98367" , null);
 
 	    Patient patient = repository.findById(patient2.getId()).get();
 	    patient.setName(updatedPatient.getName());
@@ -143,13 +143,13 @@ public class PatientJPAUnitTest {
 	  public void should_delete_patient_by_id() {
 		 
 		  
-		  Patient patient1 = new Patient("#patientname1", "#pataddress1" , 28 , "male" , 9885827367L , null);
+		  Patient patient1 = new Patient("#patientname1", "#pataddress1" , 28 , "male" , "9885827367" , null);
 	    entityManager.persist(patient1);
 
-	    Patient patient2 = new Patient("#patientname2", "#pataddress2" , 21 , "female" , 98857367L , null);
+	    Patient patient2 = new Patient("#patientname2", "#pataddress2" , 21 , "female" , "9827367" , null);
 	    entityManager.persist(patient2);
 
-	    Patient patient3 = new Patient("#patientname3", "#pataddress3" , 20 , "female" , 95827367L , null);
+	    Patient patient3 = new Patient("#patientname3", "#pataddress3" , 20 , "female" , "98852355687" , null);
 	    entityManager.persist(patient3);
 
 	    repository.deleteById(patient2.getId());
@@ -163,8 +163,8 @@ public class PatientJPAUnitTest {
 	  @Test
 	  public void should_delete_all_departments() {
 		  
-	    entityManager.persist(new Patient("#patientname1", "#pataddress1" , 28 , "male" , 9885827367L , null));
-	    entityManager.persist(new Patient("#patientname2", "#pataddress2" , 21 , "female" , 98857367L , null));
+	    entityManager.persist(new Patient("#patientname1", "#pataddress1" , 28 , "male" , "9885827367" , null));
+	    entityManager.persist(new Patient("#patientname2", "#pataddress2" , 21 , "female" , "9885827367" , null));
 
 	    repository.deleteAll();
 

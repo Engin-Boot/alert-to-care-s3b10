@@ -45,7 +45,7 @@ public class Patient implements Serializable{
 	private String gender;
 	
 	@Column(name = "Contact")
-	private Long contact;
+	private String contact;
 	
 	@Column(name = "Created At")
 	private Date createdAt;
@@ -58,7 +58,7 @@ public class Patient implements Serializable{
 		super();
 	}
 
-	public Patient(String name, String address, int age, String gender, Long contact, 
+	public Patient(String name, String address, int age, String gender, String contact, 
 			StaffDetails staffdetails) {
 		super();
 		this.name = name;
@@ -105,11 +105,11 @@ public class Patient implements Serializable{
 		this.gender = gender;
 	}
 
-	public Long getContact() {
+	public String getContact() {
 		return contact;
 	}
 
-	public void setContact(Long contact) {
+	public void setContact(String contact) {
 		this.contact = contact;
 	}
 
