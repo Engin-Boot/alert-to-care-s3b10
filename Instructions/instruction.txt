@@ -1,0 +1,14 @@
+Instructions:
+
+Prerequisites:
+
+Pgadmin Database make sure you have correct database name username and password 
+and port is free
+
+Run Pgadmin, go to pgadmin and create database named “alerttocare”.
+
+Extract the project to a folder. Import it as maven project. Do maven clean and maven install,  after that maven build.
+
+
+
+Finally Run the project as Spring boot.
