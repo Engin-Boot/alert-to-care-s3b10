@@ -1,5 +1,8 @@
 package com.philips.alerttocare.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -51,6 +54,7 @@ public class StaffDetails implements Serializable{
 	}
 	
 	@OneToMany(mappedBy="staffdetails")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Set<Patient> patient;
 
 	public StaffDetails(String username, String password, String designation, boolean adminPrevilige) {

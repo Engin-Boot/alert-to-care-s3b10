@@ -1,5 +1,8 @@
 package com.philips.alerttocare.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -52,6 +55,7 @@ public class Patient implements Serializable{
 	
 	@ManyToOne
     @JoinColumn(referencedColumnName="Id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private StaffDetails staffdetails;
 	
 	public Patient() {
